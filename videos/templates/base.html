@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'videos/css/bootstrap.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'videos/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'videos/flowplayer/skin/skin.css' %}">
+     <script src="{% static 'videos/js/jquery.min.js' %}"></script>
+     <script src="{% static 'videos/js/popper.min.js' %}"></script>
+    <link href="{% static 'videos/js/jquery.bxslider/jquery.bxslider.css' %}" rel="stylesheet">
+    <link href="{% static 'videos/css/colorbox.css' %}" rel="stylesheet">
+    <script src="{% static 'videos/flowplayer/flowplayer.min.js' %}"></script>
+    <script src="{% static 'videos/js/bootstrap.min.js' %}"></script>
+    <link href="{% static 'videos/css/style.css' %}" rel="stylesheet">
+    
+</head>
+<body style="background-color:#343a40">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg bg-dark">
+    <a class="navbar-brand" href="#">Elimisha</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Watch <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Speakers</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Lectures
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+{% block content %}
+{% endblock content %}
+
+{% block footer %}
+
+    <!-- Bootstrap core JavaScript -->
+
+
+   
+
+    <script src="{% static 'videos/js/app.js' %}"></script>
+
+{% endblock %}
+
+</body>
+</html>

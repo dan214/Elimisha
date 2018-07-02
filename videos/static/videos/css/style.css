@@ -1,0 +1,36 @@
+/*Flowplayer css*/
+
+.flowplayer {
+	width: 300px;
+	float: right;
+}
+
+.flowplayer.main-video{
+	width: 100%;
+}
+.flowplayer.is-ready .fp-player {
+  background-color: #000;
+}
+
+
+/*Navigation css*/
+ul.navbar-nav.mr-auto{
+	width: 75%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/*Container css*/
+.video-container,.watch-videos {
+	padding: 30px;
+}
+.watch-video{
+	margin: 10px;
+    width: 100%;
+    padding: 10px;
+    border: 1.5px solid;
+}
+.other-video{
+	width:100%
+}
