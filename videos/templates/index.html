@@ -1,51 +1,90 @@
-{% extends "base.html" %}
-
-{% block content %}
-
-   
-
-        <div class="row">
+{% extends "base.html" %} {% block content %}
 
 
-            <div class="video-container  col-lg-8">
+
+<div class="row">
 
 
-                <div class="flowplayer main-video" data-aspect-ratio="16:10">
-                    <video width="500" height="500">
-                        <source src="{{ video.document.url }}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+    <div class="video-container  col-lg-8">
+
+
+
+
+        <div class="card mb-3">
+            <div class="flowplayer main-video" data-aspect-ratio="16:10">
+                <video width="500" height="500">
+                    <source src="{{ video.document.url }}" type="video/mp4"> Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#video-details">Video Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#course-resources">Resources</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#course-quiz">Quiz</a>
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#course-videos">Course Videos</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane show active" id="video-details">
+                        <h5 class="card-title">Installation and Setup</h5>
+                        <p class="card-text">Speaker: Dr Daniel Irungu</p>
+                        <p class="card-text">Course: Javascript for Beginners</p>
+                        <a href="#" class="btn btn-primary">Take Quiz</a>
+                    </div>
+                    <div class="tab-pane" id="course-resources">
+                        <p class="card-text"><i>This lecture does not currently have any resources</i></p>
+                    </div>
+                    <div class="tab-pane" id="course-quiz">
+                            <p class="card-text"><i>This lecture does not currently have any questions</i></p>
+                        </div>
+                    <div class="tab-pane" id="course-videos">
+                            <p class="card-text"><i>This lecture does not currently have any resources</i></p>
+                        </div>
                 </div>
 
             </div>
+        </div>
 
-        <div class="watch-videos col-lg-4">
-
-
-
-            {% for otherVideo in videos %}
-
-            <div class="watch-video">
-                <div class="flowplayer other-video" data-aspect-ratio="16:10">
-                    <video width="250" height="250">
-                        <source src="{{ otherVideo.document.url }}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-
-                </div>
-
-                <h4>
-                    <a href="#">{{ otherVideo.name }}</a>
-                </h4>
-
-                </div>
-
-
-
-
-            {% endfor %}
-
-           </div>
-        
     </div>
+
+
+
+
+    <div class="watch-videos col-lg-4">
+
+
+
+        {% for otherVideo in videos %}
+
+        <div class="watch-video">
+            <div class="flowplayer other-video" data-aspect-ratio="16:10">
+                <video width="250" height="250">
+                    <source src="{{ otherVideo.document.url }}" type="video/mp4"> Your browser does not support the video tag.
+                </video>
+
+            </div>
+
+            <h4>
+                <a href="#">{{ otherVideo.name }}</a>
+            </h4>
+
+        </div>
+
+
+
+
+        {% endfor %}
+
+    </div>
+
+</div>
 {% endblock %}

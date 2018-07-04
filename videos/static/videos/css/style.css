@@ -12,6 +12,15 @@
   background-color: #000;
 }
 
+/*card css*/
+.video-container .card.mb-3 {
+    background-color: #bdc6ce;
+}
+
+.card.mb-3 .nav-tabs .nav-link.active
+{
+    background-color: #bdc6ce;
+}
 
 /*Navigation css*/
 ul.navbar-nav.mr-auto{
