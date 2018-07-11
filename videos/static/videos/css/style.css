@@ -15,6 +15,7 @@
 /*card css*/
 .video-container .card.mb-3 {
     background-color: #bdc6ce;
+    box-shadow: 7px 7px 7px 7px;
 }
 
 .card.mb-3 .nav-tabs .nav-link.active
@@ -34,11 +35,16 @@ ul.navbar-nav.mr-auto{
 .video-container,.watch-videos {
 	padding: 30px;
 }
+.watch-videos {
+    padding-top: 20px;
+}
 .watch-video{
 	margin: 10px;
     width: 100%;
     padding: 10px;
     border: 1.5px solid;
+    background-color: #bdc6ce;
+    box-shadow: 7px 7px 7px 7px;
 }
 .other-video{
 	width:100%
