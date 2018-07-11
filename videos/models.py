@@ -12,6 +12,7 @@ class Video(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length= 400)
     document = models.FileField(upload_to='video_folder/')
+    image = models.FileField(upload_to='video_folder/', default='/video_folder/nologo.png')
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE,null=True, blank=True)
 
     def __str__(self):

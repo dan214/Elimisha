@@ -5,13 +5,13 @@
 <div class="row">
 
 
-    <div class="video-container  col-lg-8">
+    <div class="video-container col-md-7 col-lg-7">
 
 
 
 
         <div class="card mb-3">
-            <div class="flowplayer main-video" data-aspect-ratio="16:10">
+            <div class="flowplayer is-splash main-video" data-aspect-ratio="16:10" style="background-image: url({{video.image.url}})">
                 <video width="500" height="500">
                     <source src="{{ video.document.url }}" type="video/mp4"> Your browser does not support the video tag.
                 </video>
@@ -59,14 +59,14 @@
 
 
 
-    <div class="watch-videos col-lg-4">
+    <div class="watch-videos col-lg-4 col-md-4 offset-lg-1">
 
 
 
         {% for otherVideo in videos %}
 
         <div class="watch-video">
-            <div class="flowplayer other-video" data-aspect-ratio="16:10">
+            <div class="flowplayer is-splash other-video" data-aspect-ratio="16:10" style="background-image: url({{otherVideo.image.url}})">
                 <video width="250" height="250">
                     <source src="{{ otherVideo.document.url }}" type="video/mp4"> Your browser does not support the video tag.
                 </video>
