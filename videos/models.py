@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Quiz(models.Model):
     name = models.CharField(max_length=200)
@@ -14,6 +14,7 @@ class Video(models.Model):
     document = models.FileField(upload_to='video_folder/')
     image = models.FileField(upload_to='video_folder/', default='/video_folder/nologo.png')
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE,null=True, blank=True)
+    speaker = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.name
