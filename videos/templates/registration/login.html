@@ -1,11 +1,14 @@
-{% extends "base.html" %}
+{% extends "register_base.html" %}
 
 {%  block content %}
 
     <div class="center-container">
 	<!--//header-->
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4 input-div">
 	<div class="main-content-agile">
-		<div class="sub-main-w3 border shadow-lg p-3 mb-5 bg-white rounded">
+
 			<div class="wthree-pro">
                 {% if form.errors %}
                 <p>Your username and password didn't match. Please try again.</p>
@@ -32,22 +35,16 @@
 				</div>
 				<div class="sub-w3l">
 					<a class="btn btn-primary forgot-sub" href="{% url 'password_reset' %}">Forgot Password?</a> 
-					<input type="submit" class="btn btn-primary submit-sub" value="login">
+					<input type="submit" class="btn btn-primary submit-sub" value="Sign in">
 					
 				</div>
 				<input type="hidden" name="next" value="{{ next }}" />
 			</form>
-		</div>
+
 	</div>
-	<!--//main-->
-	<!--footer-->
-	<div class="footer">
-		<p>&copy; 2017 Online Login Form. All rights reserved | Design by <a href="http://danthegreat.com">Daniel Irungu</a></p>
 	</div>
-	<!--//footer-->
+	</div>
+
 </div>
 
-{% endblock %}
-
-{% block footer %}
 {% endblock %}

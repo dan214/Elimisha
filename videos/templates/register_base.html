@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'videos/css/bootstrap.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'videos/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'videos/flowplayer/skin/skin.css' %}">
+     <script src="{% static 'videos/js/jquery.min.js' %}"></script>
+     <script src="{% static 'videos/js/popper.min.js' %}"></script>
+    <link href="{% static 'videos/js/jquery.bxslider/jquery.bxslider.css' %}" rel="stylesheet">
+    <link href="{% static 'videos/css/colorbox.css' %}" rel="stylesheet">
+    <script src="{% static 'videos/flowplayer/flowplayer.min.js' %}"></script>
+    <script src="{% static 'videos/js/bootstrap.min.js' %}"></script>
+    <link href="{% static 'videos/css/style.css' %}" rel="stylesheet">
+    
+</head>
+<body style="background-color:#343a40">
+
+{% block content %}
+{% endblock content %}
+
+{% block footer %}
+
+    <!-- Bootstrap core JavaScript -->
+
+
+   
+
+    <script src="{% static 'videos/js/app.js' %}"></script>
+
+{% endblock %}
+
+</body>
+</html>

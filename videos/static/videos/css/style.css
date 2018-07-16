@@ -49,3 +49,38 @@ ul.navbar-nav.mr-auto{
 .other-video{
 	width:100%
 }
+
+/*login css*/
+.input-div{
+    position: absolute;
+    margin: auto;
+    background-color:white;
+    padding: 20px;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    height: 50%;
+    border-radius: 10px;
+}
+
+.main-content-agile{
+    padding: 15px;
+}
+
+.sub-w3l{
+    margin-left: -14px;
+}
+.submit-sub{
+    float: right;
+    margin-right: -14px;
+}
+
+/*password reset css*/
+.password-reset-text{
+    text-align: center
+}
+
+.form-group{
+    padding: 0 17px;
+}
