@@ -10,7 +10,8 @@ def index(request):
 
     context = {
         "videos": videos,
-        "video": video
+        "video": video,
+        "user": request.user
     }
 
     return render(request,'index.html', context)

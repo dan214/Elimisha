@@ -60,7 +60,7 @@ ul.navbar-nav.mr-auto{
     right:0;
     left:0;
     bottom:0;
-    height: 50%;
+    height: 65%;
     border-radius: 10px;
 }
 
@@ -81,6 +81,24 @@ ul.navbar-nav.mr-auto{
     text-align: center
 }
 
-.form-group{
+.password-reset-form{
     padding: 0 17px;
+}
+
+.navbar ul li a:after {
+    content: "|";
+    padding-left: 15px;
+    }
+
+    .navbar ul li span:after {
+        content: "|";
+        padding-left: 15px;
+        }
+
+        .navbar ul li.last-item a:after {
+            content: "";
+            }
+
+.navbar-nav.mr-auto .nav-item span{
+    color: #e2e8ef;
 }
