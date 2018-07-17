@@ -60,7 +60,7 @@
 
 
 
-        {% for otherVideo in videos %}
+        {% for otherVideo in video_list %}
 
         <div class="watch-video">
             <div class="flowplayer is-splash other-video" data-aspect-ratio="16:10" style="background-image: url({{otherVideo.image.url}})">
@@ -71,7 +71,7 @@
             </div>
 
             <div>
-                <a href="#">{{ otherVideo.name }}</a>
+                <a href="{{otherVideo.url}}">{{ otherVideo.name }}</a>
             </div>
 
         </div>

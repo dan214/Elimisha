@@ -1,12 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from .models import Video
+from . import models
 
 def index(request):
 
-    video = Video.objects.order_by('-pk')[0]
-    videos = Video.objects.all()
+    video = models.Video.objects.order_by('-pk')[0]
+    videos = models.Video.objects.all()
 
     context = {
         "videos": videos,
@@ -15,3 +15,18 @@ def index(request):
     }
 
     return render(request,'index.html', context)
+
+
+def detail(request, video_id):
+
+    try:
+        video = models.Video.objects.get(pk=video_id)
+    except models.Video.DoesNotExist:
+        raise Http404("Video does not exist")
+    video_list = models.Video.objects.all()
+    context = {
+        "video_list": video_list,
+        "video": video,
+
+    }
+    return render(request,'detail.html',context)
