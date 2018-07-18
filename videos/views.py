@@ -6,10 +6,10 @@ from . import models
 def index(request):
 
     video = models.Video.objects.order_by('-pk')[0]
-    videos = models.Video.objects.all()
+    video_list = models.Video.objects.all()
 
     context = {
-        "videos": videos,
+        "video_list": video_list,
         "video": video,
         "user": request.user
     }
