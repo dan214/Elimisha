@@ -32,10 +32,10 @@
             <div class="card-body">
                 <div class="tab-content">
                     <div class="tab-pane show active" id="video-details">
-                        <h5 class="card-title">Installation and Setup</h5>
-                        <p class="card-text">Speaker: Dr Daniel Irungu</p>
-                        <p class="card-text">Course: Javascript for Beginners</p>
-                        <a href="#" class="btn btn-primary">Take Quiz</a>
+                        <h5 class="card-title">{{video.name}}</h5>
+                        <p class="card-text"><b>Speaker:</b> {{video.course.speaker}}</p>
+                        <p class="card-text"><b>Course:</b> {{video.course}}</p>
+                        <p class="card-text"><b>Description:</b> {{video.description}}</p>
                     </div>
                     <div class="tab-pane" id="course-resources">
                         <p class="card-text"><i>This lecture does not currently have any resources</i></p>
