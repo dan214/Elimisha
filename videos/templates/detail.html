@@ -22,8 +22,8 @@
                         <a class="nav-link" data-toggle="tab" href="#course-resources">Resources</a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#course-quiz">Quiz</a>
-                        </li>
+                        <a class="nav-link" data-toggle="tab" href="#course-quiz">Quiz</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#course-videos">Course Videos</a>
                     </li>
@@ -33,19 +33,44 @@
                 <div class="tab-content">
                     <div class="tab-pane show active" id="video-details">
                         <h5 class="card-title">{{video.name}}</h5>
-                        <p class="card-text"><b>Speaker:</b> {{video.course.speaker}}</p>
-                        <p class="card-text"><b>Course:</b> {{video.course}}</p>
-                        <p class="card-text"><b>Description:</b> {{video.description}}</p>
+                        <p class="card-text">
+                            <b>Speaker:</b> {{video.course.speaker}}</p>
+                        <p class="card-text">
+                            <b>Course:</b> {{video.course}}</p>
+                        <p class="card-text">
+                            <b>Description:</b> {{video.description}}</p>
                     </div>
                     <div class="tab-pane" id="course-resources">
-                        <p class="card-text"><i>This lecture does not currently have any resources</i></p>
+                        <p class="card-text">
+                            <i>This lecture does not currently have any resources</i>
+                        </p>
                     </div>
                     <div class="tab-pane" id="course-quiz">
-                            <p class="card-text"><i>This lecture does not currently have any questions</i></p>
-                        </div>
+                        <p class="card-text">
+                            <i>This lecture does not currently have any questions</i>
+                        </p>
+                    </div>
                     <div class="tab-pane" id="course-videos">
-                            <p class="card-text"><i>This lecture does not currently have any resources</i></p>
-                        </div>
+                        <table class="table table-bordered table-striped table-dark">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Speaker</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for inner_video in video.course.video_set.all %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td><a href="/{{inner_video.id}}">{{ inner_video.name }}</a></td>
+                                    <td><a href="/{{inner_video.id}}">{{ inner_video.course.speaker }}</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                      
+                    </div>
                 </div>
 
             </div>
@@ -63,16 +88,13 @@
         {% for otherVideo in video_list %}
 
         <div class="watch-video">
-            <div class="flowplayer is-splash other-video" data-aspect-ratio="16:10" style="background-image: url({{otherVideo.image.url}})">
-                <video width="250" height="250">
-                    <source src="{{ otherVideo.document.url }}" type="video/mp4"> Your browser does not support the video tag.
-                </video>
-
-            </div>
-
-            <div>
-                <a href="{{otherVideo.url}}">{{ otherVideo.name }}</a>
-            </div>
+                <a href="/{{ otherVideo.id }}">
+                    <img class="img-fluid" src="{{ otherVideo.image.url }}" alt="" href="/{{ otherVideo.id }}">
+                  </a>
+    
+                <div class="slide-video-text">
+                    <a href="/{{otherVideo.id}}">{{ video.name }}</a>
+                </div>
 
         </div>
 

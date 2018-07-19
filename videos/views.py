@@ -25,7 +25,7 @@ def detail(request, video_id):
         video = models.Video.objects.get(pk=video_id)
     except models.Video.DoesNotExist:
         raise Http404("Video does not exist")
-    video_list = models.Video.objects.all()
+    video_list = models.Video.objects.exclude(id=video_id).all().order_by('-id')[:5]
     context = {
         "video_list": video_list,
         "video": video,
