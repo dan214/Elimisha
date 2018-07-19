@@ -7,10 +7,12 @@ def index(request):
 
     video = models.Video.objects.order_by('-pk')[0]
     video_list = models.Video.objects.all()
+    courses = models.Course.objects.all()
 
     context = {
         "video_list": video_list,
         "video": video,
+        "courses": courses,
         "user": request.user
     }
 

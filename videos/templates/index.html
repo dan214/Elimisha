@@ -1,24 +1,24 @@
 {% extends "base.html" %} {% block content %}
 
 
-
-<div class="row">
+{% for course in courses %}
+<div class="row course-items">
 
     <div class="col-md-1 col-lg-1"></div>
 
     <div class="col-lg-offset-2 col-md-offset-2 col-md-10 col-lg-10">
-    <span class="slide-video-text">Newest videos</span>
+    <span class="slide-video-text">{{course.name}}</span>
       <div class="watch-videos-slide ">     
    
 
-        {% for video in video_list %}
+        {% for video in course.video_set.all %}
 
         <div class="slide-video">
             <a href="/{{ video.id }}">
                 <img class="img-fluid" src="{{ video.image.url }}" alt="" href="/{{ video.id }}">
               </a>
 
-            <div>
+            <div class="slide-video-text">
                 <a href="/{{video.id}}">{{ video.name }}</a>
             </div>
 
@@ -33,4 +33,5 @@
     </div>
 
 </div>
+{% endfor %}
 {% endblock %}
