@@ -136,3 +136,21 @@ span.slide-video-text{
     border-radius: 5px;
     margin: 7px !important;
 }
+
+/* create video form */
+.create-video-form{
+    background: white;
+    padding: 20px;
+    margin-bottom: 90px;
+    margin-top: 40px;
+    border-radius: 15px;
+    box-shadow: 7px 7px 7px 7px
+}
+
+.form-group label{
+    font-weight: 500
+}
+
+.create-video-text{
+    margin-bottom: 20px;
+}
