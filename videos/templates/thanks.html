@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="thanks-main-body col-md-9 offset-md-2 offset-lg-2 col-lg-9">
+            <div class="card">
+                <div class="card-body thank-you-body">
+                    <img class="img-fluid" width="100" src="{% static 'videos/images/thank_you.png' %}" alt="">
+                    <h2>Thank you for uploading a video!</h2>
+                    <p class="h6">Details of your video upload and status will be emailed to your inbox soon.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

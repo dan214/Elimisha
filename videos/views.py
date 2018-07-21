@@ -20,6 +20,9 @@ def index(request):
     return render(request,'index.html', context)
 
 
+def thanks(request):
+    return render(request,'thanks.html')
+
 def detail(request, video_id):
 
     try:

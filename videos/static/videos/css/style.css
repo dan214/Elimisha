@@ -154,3 +154,18 @@ span.slide-video-text{
 .create-video-text{
     margin-bottom: 20px;
 }
+
+/* thank you */
+
+.thank-you-body{
+    text-align: center;
+}
+
+.thanks-main-body{
+    background: white;
+    padding: 20px;
+    margin-bottom: 90px;
+    margin-top: 40px;
+    border-radius: 15px;
+    box-shadow: 7px 7px 7px 7px;
+}
