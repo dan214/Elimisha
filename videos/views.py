@@ -1,8 +1,11 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, authenticate
+
 
 from . import models
-from .forms import VideoForm
+from .forms import VideoForm,StudentForm, UserForm, SignUpForm
 
 def index(request):
 
@@ -22,7 +25,7 @@ def index(request):
 
 def thanks(request):
     return render(request,'thanks.html')
-
+ 
 def detail(request, video_id):
 
     try:
@@ -56,3 +59,43 @@ def create_video(request):
         form = VideoForm()
 
     return render(request, 'create_video.html', {'form': form})
+
+@login_required(login_url='/accounts/login/')
+def update_profile(request):
+    if request.method == 'POST':
+        user_form = SignUpForm(request.POST)
+        profile_form = StudentForm(request.POST)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, user)
+            return HttpResponseRedirect('/thanks/')
+
+    else:
+        user_form = SignUpForm(instance=request.user)
+        profile_form = StudentForm(instance=request.user.userprofile)
+    return render(request, 'register_user.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })
+
+
+def signup(request):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST)
+        student_form = StudentForm(request.POST)
+        if user_form.is_valid() and student_form.is_valid():
+            user = user_form.save()
+            student_form.save()
+            raw_password = user_form.cleaned_data.get('password1')
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, user)
+            return HttpResponseRedirect('/thanks/')
+    else:
+        user_form = UserForm(request.POST)
+        student_form = StudentForm(request.POST)
+    return render(request, 'register_user.html', {'user_form': user_form,'student_form': student_form})
+
+
