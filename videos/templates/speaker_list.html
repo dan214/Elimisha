@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% load static %}  {% block content %}
+
+<div class="row col-md-10 col-lg-10 offset-md-1 offset-lg-1 course-items speaker-list">
+
+    <div class="speakers-list-header">
+        <h2 class="create-video-head">Elimisha Speakers</h2>
+        <p class="h6" style="margin: 10px;">Thinkers. Doers. Idea-generators. These are the speakers who have videos featured on Elimisha.com.
+            If you have any questions, please email <a href="mailto:me@danthegreat.com">me@danthegreat.com</a></p><br/>
+        </div>
+{% for speaker in speaker_list %}
+
+    <div class="col-md-3 col-lg-3">
+        {% if speaker.image %}
+
+        <img height="170" width = "190" src="{{ speaker.image.url }}" alt="" href="#">
+
+        {% else %}
+
+        <img height="170" width = "190" src="{% static 'videos/images/thank_you.png' %}" alt="" href="#">
+
+        {% endif %}
+        <p>{{ speaker.username }}</p>
+        </div>
+
+        {% endfor %}
+    </div>
+        {% endblock %}

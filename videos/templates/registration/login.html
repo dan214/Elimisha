@@ -35,8 +35,11 @@
 				</div>
 				<div class="sub-w3l">
 					<a class="btn btn-primary forgot-sub" href="{% url 'password_reset' %}">Forgot Password?</a> 
-					<input type="submit" class="btn btn-primary submit-sub" value="Sign in">
+					<input type="submit" class="btn btn-primary submit-sub" value="Sign me in">
 					
+				</div>
+				<div style="margin-left: -14px;margin-top: 30px;">
+					<a class="btn btn-primary forgot-sub" href="/choose-register">New here? Create an account</a>
 				</div>
 				<input type="hidden" name="next" value="{{ next }}" />
 			</form>

@@ -1,11 +1,13 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 
+from django.views.generic import CreateView
+
 
 from . import models
-from .forms import VideoForm,StudentForm, UserForm, SignUpForm
+from .forms import VideoForm, StudentSignUpForm, SpeakerSignUpForm
 
 def index(request):
 
@@ -22,9 +24,23 @@ def index(request):
 
     return render(request,'index.html', context)
 
+def speakersList(request):
+    
+    speaker_list = models.Profile.objects.all()
+
+
+    context = {
+        "speaker_list": speaker_list,
+    }
+
+    return render(request,'speaker_list.html', context)
+
 
 def thanks(request):
     return render(request,'thanks.html')
+
+def choose_register(request):
+    return render(request,'choose_register.html')
  
 def detail(request, video_id):
 
@@ -60,42 +76,30 @@ def create_video(request):
 
     return render(request, 'create_video.html', {'form': form})
 
-@login_required(login_url='/accounts/login/')
-def update_profile(request):
-    if request.method == 'POST':
-        user_form = SignUpForm(request.POST)
-        profile_form = StudentForm(request.POST)
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=user.username, password=raw_password)
-            login(request, user)
-            return HttpResponseRedirect('/thanks/')
+class StudentSignUpView(CreateView):
+    model = models.Profile
+    form_class = StudentSignUpForm
+    template_name = 'register_student.html'
 
-    else:
-        user_form = SignUpForm(instance=request.user)
-        profile_form = StudentForm(instance=request.user.userprofile)
-    return render(request, 'register_user.html', {
-        'user_form': user_form,
-        'profile_form': profile_form
-    })
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'student'
+        return super().get_context_data(**kwargs)
 
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('/thanks')
 
-def signup(request):
-    if request.method == 'POST':
-        user_form = UserForm(request.POST)
-        student_form = StudentForm(request.POST)
-        if user_form.is_valid() and student_form.is_valid():
-            user = user_form.save()
-            student_form.save()
-            raw_password = user_form.cleaned_data.get('password1')
-            user = authenticate(username=user.username, password=raw_password)
-            login(request, user)
-            return HttpResponseRedirect('/thanks/')
-    else:
-        user_form = UserForm(request.POST)
-        student_form = StudentForm(request.POST)
-    return render(request, 'register_user.html', {'user_form': user_form,'student_form': student_form})
+class SpeakerSignUpView(CreateView):
+    model = models.Profile
+    form_class = SpeakerSignUpForm
+    template_name = 'register_speaker.html'
 
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'speaker'
+        return super().get_context_data(**kwargs)
 
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('/thanks')

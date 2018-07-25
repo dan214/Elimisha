@@ -171,3 +171,28 @@ span.slide-video-text{
     border-radius: 15px;
     box-shadow: 7px 7px 7px 7px;
 }
+
+.choose-register{
+    margin: auto;
+    /* width: 500px; */
+    position: absolute;
+    top: 20%;
+    left: 13%;
+    text-align: center;
+}
+
+.choose-text,.choose-buttons{
+    padding-bottom: 20px;
+}
+.choose-student{
+    margin-right: 30px;
+}
+
+.speaker-list{
+    background: white;
+    padding: 20px;
+    margin-bottom: 90px;
+    margin-top: 40px;
+    border-radius: 15px;
+    box-shadow: 7px 7px 7px 7px;
+}

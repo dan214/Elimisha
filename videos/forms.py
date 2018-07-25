@@ -1,9 +1,11 @@
-from django.forms import ModelForm, Textarea, TextInput, FileInput,ImageField, ChoiceField, Select, ModelChoiceField
-from django.contrib.auth.models import User
-from .models import Video,Student
+from django.forms import ModelForm, PasswordInput, Textarea, TextInput, FileInput,ImageField, ChoiceField, Select, ModelChoiceField
+
+from .models import Video,Student, Profile
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
+from django.db import transaction
 
 
 class VideoForm(ModelForm):
@@ -19,27 +21,52 @@ class VideoForm(ModelForm):
             'course': Select(attrs={'class': 'form-control'})
         }
 
+class StudentSignUpForm(UserCreationForm):
 
-class StudentForm(forms.ModelForm):
-    class Meta:
-        model = Student
-        fields = ('department', 'bio','location')
+    department = forms.CharField(widget = TextInput(attrs={'class': 'form-control'}))
+    bio = forms.CharField(widget = Textarea(attrs={'class': 'form-control'}))
+    location = forms.CharField(widget = TextInput(attrs={'class': 'form-control'}))
+    password1 = forms.CharField(widget=PasswordInput(attrs={'class': 'form-control'}))
+    password2 = forms.CharField(widget=PasswordInput(attrs={'class': 'form-control'}))
+    image = forms.FileField(widget = FileInput(attrs={'class': 'form-control-file'}))
 
+    class Meta(UserCreationForm.Meta):
+        model = Profile
+        widgets = {
+            'username': TextInput(attrs={'class': 'form-control'}),
+        }
+
+    @transaction.atomic
+    def save(self):
+        user = super().save(commit=False)
+        user.is_student = True
+        user.department = self.cleaned_data['department']
+        user.bio = self.cleaned_data['bio']
+        user.location = self.cleaned_data['location']
+        user.image = self.cleaned_data['image']
+        user.save()
+        student = Student.objects.create(user=user)
+        student.save()
+        return user
+
+
+class SpeakerSignUpForm(UserCreationForm):
     
-class UserForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = ('first_name', 'last_name', 'email','password1', 'password2',)
+    department = forms.CharField(widget = TextInput(attrs={'class': 'form-control'}))
+    bio = forms.CharField(widget = Textarea(attrs={'class': 'form-control'}))
+    location = forms.CharField(widget = TextInput(attrs={'class': 'form-control'}))
+    password1 = forms.CharField(widget=PasswordInput(attrs={'class': 'form-control'}))
+    password2 = forms.CharField(widget=PasswordInput(attrs={'class': 'form-control'}))
 
+    class Meta(UserCreationForm.Meta):
+        model = Profile
+        widgets = {
+            'username': TextInput(attrs={'class': 'form-control'}),
+        }
 
-
-class SignUpForm(UserCreationForm):
-
-    birth_date = forms.DateField(help_text='Required. Format: YYYY-MM-DD')
-    bio = forms.CharField()
-    department = forms.CharField()
-    location = forms.CharField()
-
-    class Meta:
-        model = User
-        fields = ('username', 'password1', 'password2', 'birth_date', 'bio' ,'department','location' )
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_teacher = True
+        if commit:
+            user.save()
+        return user

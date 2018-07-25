@@ -1,0 +1,21 @@
+{% extends "register_base.html" %}{% load static %} {% block content %}
+
+<div class="container">
+    <div class="row">
+
+            <div class="choose-register col-md-9 offset-md-2 offset-lg-2 col-lg-9">
+                    <div class="card">
+                        <div class="card-body thank-you-body">
+                            <h2>Thank you for your interest to register to Elimisha! </h2>
+                            <p class="h6 choose-text">Please select one of the options below</p>
+                            <div class="choose-buttons">
+                                    <a href="/create-student" class="btn btn-primary btn-lg choose-student">Register as a Student</a>
+                                    <a href="/create-speaker" class="btn btn-info btn-lg">Register as a Speaker</a>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+    </div>
+</div>
+
+{% endblock %}
