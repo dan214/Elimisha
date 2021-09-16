@@ -23,7 +23,7 @@ To get this project up and running on your computer, clone or download the proje
 
 ## Prerequisites
 
-You will need to install Django and Python 3.6 and a few other requirements to get up and running. There is a requirements.txt for this
+You will need to install Django and Python 3.6 and a few other requirements to get up and running.s
 
 ## Languages
 
@@ -32,14 +32,6 @@ The reason for using Python is that it is simple enough for things to happen (re
 
 ### Django(Web Framework)
 
-
-## Installation
-
-To get you local environment running, install the prerequisites from the requirements.txt and then run jumo-test.py
-
-```
-pip install -r requirements.txt
-```
 
 ## Authors
 
